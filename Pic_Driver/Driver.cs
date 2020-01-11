@@ -46,11 +46,13 @@ namespace Pic_Driver
                     case 0:
                         {
                             Console.WriteLine("Bajar volumen\n");
+                            Volume.VolumeDown();
                             break;
                         }
                     case 1:
                         {
                             Console.WriteLine("Subir volumen\n");
+                            Volume.VolumeUp();
                             break;
                         }
                     case 2:

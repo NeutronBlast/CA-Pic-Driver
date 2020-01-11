@@ -1,27 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace Pic_Driver
 {
     public class Volume
     {
-        private const int APPCOMMAND_VOLUME_MUTE = 0x80000;
-        private const int APPCOMMAND_VOLUME_UP = 0xA0000;
-        private const int APPCOMMAND_VOLUME_DOWN = 0x90000;
-        private const int WM_APPCOMMAND = 0x319;
+        private const byte VK_VOLUME_MUTE = 0xAD;
+        private const byte VK_VOLUME_DOWN = 0xAE;
+        private const byte VK_VOLUME_UP = 0xAF;
+        private const UInt32 KEYEVENTF_EXTENDEDKEY = 0x0001;
+        private const UInt32 KEYEVENTF_KEYUP = 0x0002;
 
         [DllImport("user32.dll")]
-        public static extern IntPtr SendMessageW(IntPtr hWnd, int Msg,
-        IntPtr wParam, IntPtr lParam);
+        static extern void keybd_event(byte bVk, byte bScan, UInt32 dwFlags, UInt32 dwExtraInfo);
 
-        public void test()
+        [DllImport("user32.dll")]
+        static extern Byte MapVirtualKey(UInt32 uCode, UInt32 uMapType);
+
+        public static void VolumeUp()
         {
-            Console.WriteLine("Hola");
+            keybd_event(VK_VOLUME_UP, MapVirtualKey(VK_VOLUME_UP, 0), KEYEVENTF_EXTENDEDKEY, 0);
+            keybd_event(VK_VOLUME_UP, MapVirtualKey(VK_VOLUME_UP, 0), KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
+        }
+
+        public static void VolumeDown()
+        {
+            keybd_event(VK_VOLUME_DOWN, MapVirtualKey(VK_VOLUME_DOWN, 0), KEYEVENTF_EXTENDEDKEY, 0);
+            keybd_event(VK_VOLUME_DOWN, MapVirtualKey(VK_VOLUME_DOWN, 0), KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
         }
     }
 }
