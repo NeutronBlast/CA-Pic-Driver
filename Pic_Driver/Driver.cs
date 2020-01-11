@@ -30,7 +30,51 @@ namespace Pic_Driver
         private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             // Show all the incoming data in the port's buffer
-            Console.WriteLine(port.ReadExisting());
+            string output = port.ReadExisting();
+            Console.WriteLine(output);
+
+            int result;
+
+            Volume v = new Volume();
+
+            try
+            {
+                result = Int32.Parse(output);
+
+                switch (result)
+                {
+                    case 0:
+                        {
+                            Console.WriteLine("Bajar volumen\n");
+                            break;
+                        }
+                    case 1:
+                        {
+                            Console.WriteLine("Subir volumen\n");
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.WriteLine("Subir brillo\n");
+                            break;
+                        }
+                    case 3:
+                        {
+                            Console.WriteLine("Bajar brillo\n");
+                            break;
+                        }
+                    default:
+                        {
+                            Console.Write("El driver no reconoce esta entrada: ");
+                            Console.WriteLine(result);
+                            break;
+                        }
+                }
+
+            } catch (FormatException err)
+            {
+                Console.WriteLine(err.Message);
+            }
         }
 
         static void Main(string[] args)
