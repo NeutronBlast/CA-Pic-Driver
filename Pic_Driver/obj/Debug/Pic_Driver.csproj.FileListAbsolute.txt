@@ -1,0 +1,6 @@
+C:\Users\Hyper\Documents\GitHub\Pic_Driver\Pic_Driver\bin\Debug\Pic_Driver.exe.config
+C:\Users\Hyper\Documents\GitHub\Pic_Driver\Pic_Driver\bin\Debug\Pic_Driver.exe
+C:\Users\Hyper\Documents\GitHub\Pic_Driver\Pic_Driver\bin\Debug\Pic_Driver.pdb
+C:\Users\Hyper\Documents\GitHub\Pic_Driver\Pic_Driver\obj\Debug\Pic_Driver.csprojAssemblyReference.cache
+C:\Users\Hyper\Documents\GitHub\Pic_Driver\Pic_Driver\obj\Debug\Pic_Driver.exe
+C:\Users\Hyper\Documents\GitHub\Pic_Driver\Pic_Driver\obj\Debug\Pic_Driver.pdb
