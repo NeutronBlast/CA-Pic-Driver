@@ -13,6 +13,7 @@ namespace Pic_Driver
 {
     class Driver
     {
+        public short b_val = 170;
         // Create the serial port with basic settings 
         SerialPort port = new SerialPort("COM1",
           9600, Parity.None, 8, StopBits.One);
@@ -40,7 +41,7 @@ namespace Pic_Driver
             Console.WriteLine(output);
 
             int result;
-            short b_val = 170;
+
 
             try
             {
@@ -66,6 +67,7 @@ namespace Pic_Driver
 
                             if (b_val < 230) {
                                 b_val += 20;
+                                //Console.WriteLine(b_val);
                                 Brightness.SetBrightness(b_val);
                             }
                             break;
@@ -77,6 +79,7 @@ namespace Pic_Driver
                             if (b_val > 50)
                             {
                                 b_val -= 20;
+                                //Console.WriteLine(b_val);
                                 Brightness.SetBrightness(b_val);
                             }
 
