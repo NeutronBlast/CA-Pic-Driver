@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 /* Serial COM library */
 using System.IO.Ports;
@@ -16,6 +18,10 @@ namespace Pic_Driver
           9600, Parity.None, 8, StopBits.One);
         [STAThread]
 
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+        IntPtr hMonitor = new IntPtr(Screen.PrimaryScreen.GetHashCode());
         private void SerialPortProgram()
         {
             Console.WriteLine("Datos enviados desde el PIC:");
@@ -34,8 +40,7 @@ namespace Pic_Driver
             Console.WriteLine(output);
 
             int result;
-
-            Volume v = new Volume();
+            short b_val = 170;
 
             try
             {
@@ -58,11 +63,23 @@ namespace Pic_Driver
                     case 2:
                         {
                             Console.WriteLine("Subir brillo\n");
+
+                            if (b_val < 230) {
+                                b_val += 20;
+                                Brightness.SetBrightness(b_val);
+                            }
                             break;
                         }
                     case 3:
                         {
                             Console.WriteLine("Bajar brillo\n");
+
+                            if (b_val > 50)
+                            {
+                                b_val -= 20;
+                                Brightness.SetBrightness(b_val);
+                            }
+
                             break;
                         }
                     default:
@@ -81,6 +98,7 @@ namespace Pic_Driver
 
         static void Main(string[] args)
         {
+            Console.Title = "PIC DRIVER";
             Driver d = new Driver();
             d.SerialPortProgram();
         }
