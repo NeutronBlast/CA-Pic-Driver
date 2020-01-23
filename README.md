@@ -59,9 +59,22 @@ It's important that you select COM2 because the console application for the driv
 
 ![Circuit](./images/circuit.png)
 
+The materials used were:
+
+|**Quantity**|      **Item**           |
+|------------|-------------------------|
+|  1         |PIC16F84                 |
+|  1         |MAX232                   |
+|  1         |16 pin base              |
+|  1         |8 pin base               |
+|  1         |Quartz Crystal (4MHz)    |
+|  2         |20pF condensor           |
+|  4         |Buttons                  |
+|  5         |10K Resistors            |
+|  4         |10uF Tantalium condensors|
+|  1         |DB9 Connector            |
+
 2. Connect the circuit through RS232 COM1 in the PC
 3. Use something like [MPLAB](https://www.microchip.com/mplab/compilers) to compile the .asm file and get a .asm to .hex conversion
 4. Download and install [WinPic](https://www.winpic800.com) 
 5. Use WinPic to set up the PIC microcontroller with the .hex file generated
-6. Download and install [Hyperterminal](https://www.tecnozero.com/hyperterminal.zip)
-7. Set up Hyperterminal to use COM1
