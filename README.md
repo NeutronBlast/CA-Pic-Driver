@@ -66,7 +66,7 @@ The materials used were:
 |  1         |PIC16F84                 |
 |  1         |MAX232                   |
 |  1         |16 pin base              |
-|  1         |8 pin base               |
+|  1         |18 pin base              |
 |  1         |Quartz Crystal (4MHz)    |
 |  2         |20pF condensor           |
 |  4         |Buttons                  |
